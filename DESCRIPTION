@@ -1,16 +1,15 @@
 Package: checkRlistit
-Title: What the Package Does (One Line, Title Case)
+Title: Access the Checklist of Italian Vascular Flora
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Gianni", "Bedini", , "gianni.bedini@unipi.it", role = c("aut", "cre"))
+Description: Access the Checklist of Italian vascular flora, bundled as dataframe in three forms: all names (accepted and synonyms), accepted names with associated data, and parsed names.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Imports: 
+    rgnparser,
     stringdist,
     stringr
 Depends: 
