@@ -23,9 +23,9 @@ superparse <- function(namevek) {
   myparsed$i_qualif <- emptychar
   myparsed$i_qualif[myparsed$cardinality == 3] <- stringr::word(myparsed$canonicalfull[myparsed$cardinality == 3], start = 3)
   ### find end of binomina
-  myparsed$binend <- stringr::str_locate(namevek,pattern = "^[A-Z][a-z]+ [-a-z]+ ")[,2]
+  myparsed$binend <- stringr::str_locate(myparsed$verbatim,pattern = "^[A-Z][a-z]+ [-a-z]+ ")[,2]
   ### find start / end of infraspecific qualifier
-  iqm <- stringr::str_locate(namevek, pattern = myparsed$i_qualif)
+  iqm <- stringr::str_locate(myparsed$verbatim, pattern = myparsed$i_qualif)
   myparsed$i_qualstart <- iqm[,1]
   myparsed$i_qualend <- iqm[,2]
   myparsed$s_author <- emptychar
@@ -33,7 +33,14 @@ superparse <- function(namevek) {
   myparsed$i_epithet <- emptychar
   myparsed$i_epithet[myparsed$cardinality == 3] <- stringr::word(myparsed$canonicalsimple[myparsed$cardinality == 3], start = 3)
   myparsed$i_epitend <- emptynum
-  myparsed$i_epitend[myparsed$cardinality == 3] <- stringr::str_locate(myparsed$verbatim[myparsed$cardinality == 3],myparsed$i_epithet[myparsed$cardinality == 3])[,2]
+
+  h1 <- substr(myparsed$verbatim[myparsed$cardinality == 3],
+               start = myparsed$i_qualend[myparsed$cardinality == 3] + 2,
+               stop = 999)
+  h2 <- myparsed$i_epithet[myparsed$cardinality == 3]
+  h3 <- myparsed$i_qualend[myparsed$cardinality == 3] + 1
+  
+  myparsed$i_epitend[myparsed$cardinality == 3] <- stringr::str_locate(h1,h2)[,2] + h3
   myparsed$s_author[myparsed$cardinality == 3] <- detect_siauth(myparsed[myparsed$cardinality == 3,])
   myparsed$i_author <- emptychar
   myparsed$i_author[myparsed$cardinality == 3] <- detect_iauth(myparsed[myparsed$cardinality == 3,])
