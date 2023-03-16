@@ -16,7 +16,7 @@ superparse <- function(namevek) {
   cat("parsing",length(namevek),"plant names with rgnparser::gn_parse_tidy...\n")
   myparsed <- rgnparser::gn_parse_tidy(namevek)
   cat("parsing completed!\n")
-  emptychar <- rep("nomatchingdata",nrow(myparsed))
+  emptychar <- rep('',nrow(myparsed))
   emptynum <- rep(NA,nrow(myparsed))
   myparsed$g_epithet <- stringr::word(myparsed$canonicalsimple)
   myparsed$s_epithet <- stringr::word(myparsed$canonicalsimple,start = 2)
@@ -53,7 +53,7 @@ detect_siauth <- function(pnames) {
   ### passed parameters is a dataframe of parsed names with cardinality = 3
   r <- ifelse((pnames$i_qualstart - pnames$binend) > 1,
               substr(pnames$verbatim,start = pnames$binend + 1, stop = pnames$i_qualstart - 1),
-              "nomatchingdata")
+              '')
   return(r)
 }
 
@@ -61,6 +61,6 @@ detect_iauth <- function(pnames) {
   l <- nchar(pnames$verbatim)
   r <- ifelse(pnames$i_epitend < l,
               substr(pnames$verbatim,start = pnames$i_epitend + 2,stop = l),
-              "nomatchingdata")
+              '')
   return(r)
 }
