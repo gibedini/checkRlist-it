@@ -52,7 +52,7 @@
 #' s <- nameStand(my_names)
 nameStand <- function(nvec) {
   s <- checkRlistit::superparse(nvec) %>%
-    dplyr::filter(quality > 0, quality < 4, cardinality > 1, cardinality < 4)
+    dplyr::filter(quality > 0, quality < 5, cardinality > 1, cardinality < 4)
   s_row <- nrow(s)
   m_exact <- data.frame(jcol = c("verbatim","canonicalfull","canonicalsimple","canonicalstem"),
                         mtyp = c("perfect","full","simple","stem"))
