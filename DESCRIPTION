@@ -1,9 +1,12 @@
 Package: checkRlistit
 Title: Access the Checklist of Italian Vascular Flora
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Gianni", "Bedini", , "gianni.bedini@unipi.it", role = c("aut", "cre"))
-Description: Access the Checklist of Italian vascular flora, bundled as dataframe in three forms: all names (accepted and synonyms), accepted names with associated data, and parsed names.
+Description: Access the Checklist of Italian vascular flora, bundled as dataframe 
+    in three forms: all names (accepted and synonyms), accepted names with associated data, 
+    and parsed names. In addition, it offers a "nameStand" function to standardise a 
+    set of names againsg the Checklist.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
