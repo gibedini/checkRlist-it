@@ -77,14 +77,14 @@ nameStand <- function(nvec) {
     
     f_match <- fjoin(ds = nosub_match3, jcol = c("g_epithet" = "g_epithet",
                                                  "i_epithet" = "s_epithet"),
-                     maxdist = c(1,4), mtyp = "sub2sp", ckl_df = ckl_parsed2)
+                     maxdist = 1, mtyp = "sub2sp", ckl_df = ckl_parsed2)
     e_match <- dplyr::union(e_match,f_match)
     unmatched_v <- setdiff(nosub_match3$verbatim,f_match$myname)
     if(nrow(e_match) == s_row) break
     
     f_match <- fjoin(ds = nosub_match2, jcol = c("g_epithet" = "g_epithet",
                                                  "s_epithet" = "i_epithet"),
-                     maxdist = c(1,4), mtyp = "sp2sub", ckl_df = ckl_parsed3)
+                     maxdist = 1, mtyp = "sp2sub", ckl_df = ckl_parsed3)
     e_match <- dplyr::union(e_match,f_match)
     if(nrow(e_match) == s_row) break
     
